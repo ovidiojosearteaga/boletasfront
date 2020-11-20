@@ -1,6 +1,6 @@
 # BoletasFront
 
-##Frontend Angular de Proyecto de Prueba tecnica de Gestion de Reserva de Boletas
+## Frontend Angular de Proyecto de Prueba tecnica de Gestion de Reserva de Boletas
 
 ## Instalación
 
