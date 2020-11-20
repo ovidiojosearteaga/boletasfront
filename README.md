@@ -8,7 +8,7 @@ Para instalar el proyecto en su maquina local debe descargar o clonar el mismo. 
 
 ## Configuración
 
-Antes de iniciar el proyecto es necesario hacer la configuración de la url. Esto se debe hacer accediento al archivo /src/environment.ts y agregando la siguiente clave al objeto de configuración: `url: 'http://127.0.0.1:8000/api'` en la ip se debe cambiar por el nombre o ip del host local.
+Antes de iniciar el proyecto es necesario hacer la configuración de la url. Esto se debe hacer accediendo al archivo /src/environment.ts y agregando la siguiente clave al objeto de configuración: `url: 'http://127.0.0.1:8000/api'` en la ip se debe cambiar por el nombre o ip del host local.
 
 El objeto debe quedar asi:
 
