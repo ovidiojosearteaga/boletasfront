@@ -1,0 +1,44 @@
+<div class="card mt-5" *ngIf="userId === undefined">
+  <div class="card-body">
+    <div class="tickets-available-info" *ngIf="ticketsAvailable !== null && ticketsAvailable >= 0; else notTicketsAvailableInfo">
+      <h3>Boletas disponibles</h3>
+      <p>
+        <strong>{{ticketsAvailable}}</strong>
+      </p>
+
+      <button class="btn btn-success" (click)="onReserve()">Reservar boleta</button>
+    </div>
+    <ng-template #notTicketsAvailableInfo>
+      <h3>No hay Boletas disponibles</h3>
+    </ng-template>
+
+    <div class="alert alert-danger mt-2" role="alert" *ngIf="errorMessage !== undefined">
+      {{errorMessage}}
+    </div>
+  
+    <div class="alert alert-success mt-2" role="alert" *ngIf="successMessage !== undefined">
+      {{successMessage}}
+    </div>
+  </div>
+</div>
+
+<h2 class="mt-5">Mis boletas</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fecha de creación</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ticket of tickets; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{ticket.created_at}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="onDelete(ticket.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

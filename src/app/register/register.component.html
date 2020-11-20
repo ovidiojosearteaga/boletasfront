@@ -1,0 +1,102 @@
+<div class="card mt-5">
+  <div class="card-header">
+    <h2>Registro</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage !== undefined">
+      {{errorMessage}}
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="successMessage !== undefined">
+      {{successMessage}}
+    </div>
+    
+    <form [formGroup]="registerForm">
+      <div class="form-group">
+        <label for="name">Nombres</label>
+        <input 
+          formControlName="name" 
+          type="text" 
+          class="form-control" 
+          name="name" 
+          placeholder="Nombres"
+          [class.is-valid]="registerForm.controls['name'].valid && registerForm.controls['name'].touched"
+          [class.is-invalid]="registerForm.controls['name'].invalid && registerForm.controls['name'].touched && registerForm.controls['name'].errors.required"
+          >
+        <small class="form-text text-muted">Escribe tus nombres.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Apellidos</label>
+        <input 
+          formControlName="lastname" 
+          type="text" 
+          class="form-control" 
+          name="lastname" 
+          placeholder="Apellidos"
+          [class.is-valid]="registerForm.controls['lastname'].valid && registerForm.controls['lastname'].touched"
+          [class.is-invalid]="registerForm.controls['lastname'].invalid && registerForm.controls['lastname'].touched && registerForm.controls['lastname'].errors?.required"
+        >
+        <small class="form-text text-muted">Escribe tus apellidos.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          formControlName="email" 
+          type="email" 
+          class="form-control" 
+          name="email" 
+          placeholder="email@email.com"
+          [class.is-valid]="registerForm.controls['email'].valid && registerForm.controls['email'].touched"
+          [class.is-invalid]="
+            registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].touched && 
+            (registerForm.controls['email'].errors?.required ||
+            registerForm.controls['email'].errors?.email)"  
+        >
+        <small class="form-text text-muted">Escribe tu email.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          formControlName="password" 
+          type="password" 
+          class="form-control" 
+          name="password" 
+          placeholder="Password"
+          [class.is-valid]="registerForm.controls['password'].valid && registerForm.controls['password'].touched"
+          [class.is-invalid]="
+            registerForm.controls['password'].invalid && 
+            registerForm.controls['password'].touched && 
+            (registerForm.controls['password'].errors?.required ||
+            registerForm.controls['password'].errors?.minlength)"
+        >
+        <small class="form-text text-muted">Escribe tu password</small>
+      </div>
+
+      <div class="form-group">
+        <label for="c_password">Confirmar Password</label>
+        <input 
+          formControlName="c_password" 
+          type="password" 
+          class="form-control" 
+          name="c_password" 
+          placeholder="Confirmar Password"
+          [class.is-valid]="registerForm.controls['c_password'].valid && registerForm.controls['c_password'].touched"
+          [class.is-invalid]="
+            registerForm.controls['c_password'].invalid && 
+            registerForm.controls['c_password'].touched && 
+            (registerForm.controls['c_password'].errors?.required ||
+            registerForm.controls['c_password'].errors?.minlength)"
+        >
+        <small class="form-text text-muted">Confirma tu Password</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="onRegister()" [disabled]="registerForm.invalid">Registrarme</button>
+    </form>
+
+  </div>
+</div>

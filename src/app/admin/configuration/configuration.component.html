@@ -1,0 +1,35 @@
+<div class="card mt-5">
+  <div class="card-header">
+    <h2>Configuración</h2>
+  </div>
+  <div class="card-body">
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage !== undefined">
+      {{errorMessage}}
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="successMessage !== undefined">
+      {{successMessage}}
+    </div>
+
+    <form [formGroup]="configurationForm">
+      <div class="form-group">
+        <label for="max_tickets">Número máximo de boletas</label>
+        <input 
+          formControlName="max_tickets"
+          type="number" 
+          class="form-control" 
+          name="max_tickets" 
+          min=0
+          [class.is-valid]="configurationForm.controls['max_tickets'].valid && configurationForm.controls['max_tickets'].touched"
+          [class.is-invalid]="
+            configurationForm.controls['max_tickets'].invalid &&
+            configurationForm.controls['max_tickets'].touched && 
+            (configurationForm.controls['max_tickets'].errors?.required ||
+            configurationForm.controls['max_tickets'].errors?.min)"  
+        >
+        <small id="emailHelp" class="form-text text-muted">Número máximo de tickets</small>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onUpdate()" [disabled]="configurationForm.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

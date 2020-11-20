@@ -1,4 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'boletasFront';
+
+  constructor(
+    public user:UserService,
+    public auth:AuthService,
+    private router:Router
+  ) {
+
+  }
+
+  onLogout() {
+    this.auth.logout().subscribe();
+    this.auth.token = undefined;
+    this.user.user = undefined;
+    this.router.navigate(['/']);
+  }
 }
